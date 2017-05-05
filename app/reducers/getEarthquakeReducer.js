@@ -14,7 +14,6 @@ const getEarthquakeReducer = (state=initialState, action) => {
       });
     default:
       return state;
-      //
   }
 };
 
