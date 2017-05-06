@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "postinstall": "webpack --config ./webpack.config.js --progress --colors",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "Phanindra Veera a.k.a factsfinder",
   "license": "ISC",
