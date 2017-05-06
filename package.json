@@ -1,19 +1,20 @@
 {
   "name": "quakes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Earthquakes happening around the world",
   "engines": {
     "node": "6.10.1"
   },
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "webpack --config ./webpack.config.js --progress --colors",
+    "start": "NODE_ENV=production node server.js",
   },
   "author": "Phanindra Veera a.k.a factsfinder",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
