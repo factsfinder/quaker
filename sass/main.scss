@@ -26,6 +26,9 @@ p{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  @media (max-width: 820px){
+    flex-direction: column;
+  }
 }
 
 .btn{
@@ -49,9 +52,44 @@ p{
       box-shadow: $box-shadow;
       color: white;
     }
-
     &:active{
       transform: translateY(4px);
+    }
+    @media (max-width: 820px){
+      font-size: 18px;
+      margin-left:10%;
+      margin-right: 10%;
+    }
+}
+
+.toggle-list-chart-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.list-btn, .chart-btn{
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 15px 32px;
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 20px;
+    background-color: transparent;
+    transition:  all 0.3s ease;
+    &:hover{
+      background-color: #4CAF50;
+      color: black;
+      border: 1px solid transparent;
+    }
+    &:active{
+      background-color: transparent;
     }
 }
 
@@ -60,7 +98,8 @@ p{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:center;
-  margin-top: 30px;
+  margin-top: 15px;
+
 }
 .earthquake-details{
   display: block;
@@ -78,5 +117,28 @@ p{
   }
   &:hover p{
     color: black;
+  }
+}
+
+.earthquake-charts{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer{
+  max-width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  p{
+    color: #fff;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+    &:hover{
+      color: #4CAF50;
+    }
   }
 }

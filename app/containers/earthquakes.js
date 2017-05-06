@@ -6,29 +6,73 @@ import reducers from '../reducers/reducers.js';
 import BtnList from '../components/btnList.js';
 import EarthquakeDetails from '../components/earthquakeDetails.js';
 import Chart from '../components/chart.js';
-
-const ToggleButton = (props) => {
-  return (<button className="toggle-btn" onClick={props.CloseList}>Toggle List</button>);
-}
+import ToggleButton from '../components/toggleBtn.js';
+import ChartButton from '../components/chartBtn.js';
 
 class Earthquakes extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      "show_earthquake_list": true
+      "show_earthquake_list": false,
+      "show_earthquake_chart": false,
+      "listBtnName": "Hide List",
+      "chartBtnName": "Hide Chart"
     }
-    this.handleCloseList = this.handleCloseList.bind(this);
+    this.handleToggleList = this.handleToggleList.bind(this);
+    this.handleToggleChart = this.handleToggleChart.bind(this);
+    this.handleListBtnName = this.handleListBtnName.bind(this);
+    this.handleChartBtnName = this.handleChartBtnName.bind(this);
   }
 
-  handleCloseList(){
+  //Change/Toggle List button name
+  handleListBtnName(){
+    if(this.props.count > 0 && this.state.show_earthquake_list){
+      this.setState({
+        "listBtnName" : "Hide List"
+      });
+    }
+    else if(!this.state.show_earthquake_list) {
+      this.setState({
+        "listBtnName" : "Show List"
+      });
+    }
+  }
+
+  // Show or Hide the Earthquakes list
+  handleToggleList(){
     this.setState({
       "show_earthquake_list": !this.state.show_earthquake_list
-    })
+    });
+    this.handleListBtnName();
+  }
+
+  //Change/Toggle Chart button name
+  handleChartBtnName(){
+    if(this.props.count > 0 && this.state.show_earthquake_chart){
+      this.setState({
+        "chartBtnName" : "Hide Chart"
+      });
+    }
+    else if(!this.state.show_earthquake_chart) {
+      this.setState({
+        "chartBtnName" : "Show Chart"
+      });
+    }
+  }
+
+  //show or hide the Earthquakes Chart
+  handleToggleChart(){
+    this.setState({
+      "show_earthquake_chart": !this.state.show_earthquake_chart
+    });
+    this.handleChartBtnName();
   }
 
   render(){
    return (
-    <div>
+    <div className="main">
+
+      //The big green buttons on top
       <BtnList
         Earthquakes_PastHour={this.props.getEarthquakes_PastHour}
         Earthquakes_PastWeek={this.props.getEarthquakes_PastWeek}
@@ -36,18 +80,28 @@ class Earthquakes extends React.Component{
         Earthquakes_PastMonth={this.props.getEarthquakes_PastMonth}
        />
 
-     <div className="earthquake-details-block">
-       <ToggleButton CloseList={this.handleCloseList}/>
-        {this.props.earthquakeData.map((earthquake, i) => {
-          return (
-              <EarthquakeDetails
-                key={i} place={earthquake.properties.place} time={earthquake.properties.time} mag={earthquake.properties.mag}
-              />
+      //Toggle List button and Toggle Chart button
+         {this.props.count>0 ?
+            <div className="toggle-list-chart-buttons">
+              <ToggleButton toggleList={this.handleToggleList} listBtnName={this.state.listBtnName} />
+              <ChartButton  toggleChart={this.handleToggleChart} chartBtnName={this.state.chartBtnName}/>
+            </div>
+           : null
+         }
+
+      //Chart
+      {!this.state.show_earthquake_chart && <Chart ChartData={this.props.chartData}/> }
+
+      <div className="earthquake-details-block">
+        {!this.state.show_earthquake_list ?
+          this.props.earthquakeData.map((earthquake, i) => {
+            return (
+              <EarthquakeDetails key={i} place={earthquake.properties.place} time={earthquake.properties.time} mag={earthquake.properties.mag} />
             );
-          })
-        }
+          }) : null}
       </div>
-     </div>
+
+    </div>
     );
   }
 }
@@ -59,7 +113,7 @@ const mapStateToProps = (state) => {
     place: state.getEarthquakeReducer.place,
     time: state.getEarthquakeReducer.time,
     magnitude: state.getEarthquakeReducer.magnitude,
-    chartData: state.getEarthquakeReducer.chartData,
+    chartData: state.getEarthquakeReducer.earthquakeChartData,
     earthquakeData: state.getEarthquakeReducer.earthquakeData,
   }
 };

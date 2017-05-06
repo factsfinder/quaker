@@ -14,10 +14,8 @@
   "author": "Phanindra Veera a.k.a factsfinder",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-paginate": "^4.4.2",
     "react-redux": "^5.0.4",
     "recharts": "^0.22.4",
     "redux": "^3.6.0",
