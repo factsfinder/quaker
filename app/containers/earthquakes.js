@@ -72,7 +72,6 @@ class Earthquakes extends React.Component{
    return (
     <div className="main">
 
-      //The big green buttons on top
       <BtnList
         Earthquakes_PastHour={this.props.getEarthquakes_PastHour}
         Earthquakes_PastWeek={this.props.getEarthquakes_PastWeek}
@@ -80,7 +79,6 @@ class Earthquakes extends React.Component{
         Earthquakes_PastMonth={this.props.getEarthquakes_PastMonth}
        />
 
-      //Toggle List button and Toggle Chart button
          {this.props.count>0 ?
             <div className="toggle-list-chart-buttons">
               <ToggleButton toggleList={this.handleToggleList} listBtnName={this.state.listBtnName} />
