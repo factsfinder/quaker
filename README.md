@@ -3,8 +3,7 @@ Quaker is a web application written in React and Redux that will give us the lis
 Steps to run this application on your localhost
 1) Clone the repository and cd into the directory
 2) Run 'npm install'
-3) Run 'npm run build'
-4) Run 'npm run start'
+3) Run 'npm run start-dev'
 
 Now visit localhost:8081
-The port number might be different, please check the terminal after the start command.
+The port number might be different, please check the terminal after the start-dev command.
