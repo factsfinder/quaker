@@ -23,6 +23,10 @@ class Earthquakes extends React.Component{
     this.handleListBtnName = this.handleListBtnName.bind(this);
     this.handleChartBtnName = this.handleChartBtnName.bind(this);
   }
+  
+  componentDidMount(){
+    this.props.getEarthquakes_PastHour();
+  }
 
   //Change/Toggle List button name
   handleListBtnName(){
