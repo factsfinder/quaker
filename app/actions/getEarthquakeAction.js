@@ -1,3 +1,10 @@
+export function fetching_earthquakes() {
+  return {
+    type: "FETCHING_EARTHQUAKES",
+    info: {fetching: true} 
+  }
+}
+
 export function earthquakes_by_hour(data) {
   return {
     type: "GET_EARTHQUAKES_PAST_HOUR",
