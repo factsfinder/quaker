@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import {fetching_earthquakes, earthquakes_by_hour, earthquakes_by_day, earthquakes_by_week, earthquakes_by_month } from '../actions/getEarthquakeAction.js'
+import {earthquakes} from '../actions/getEarthquakeAction.js'
 import reducers from '../reducers/reducers.js';
 import BtnList from '../components/btnList.js';
 import EarthquakeDetails from '../components/earthquakeDetails.js';
@@ -27,7 +27,7 @@ class Earthquakes extends React.Component{
   }
   
   componentDidMount(){
-    this.props.getEarthquakes_PastHour();
+    this.props.getEarthquakes("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
   }
 
   componentWillReceiveProps(nextProps){
@@ -73,10 +73,10 @@ class Earthquakes extends React.Component{
     <div className="main">
 
       <BtnList
-        Earthquakes_PastHour={this.props.getEarthquakes_PastHour}
-        Earthquakes_PastWeek={this.props.getEarthquakes_PastWeek}
-        Earthquakes_PastDay={this.props.getEarthquakes_PastDay}
-        Earthquakes_PastMonth={this.props.getEarthquakes_PastMonth}
+        Earthquakes_PastHour={()=>this.props.getEarthquakes("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")}
+        Earthquakes_PastWeek={()=>this.props.getEarthquakes("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")}
+        Earthquakes_PastDay={()=>this.props.getEarthquakes("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")}
+        Earthquakes_PastMonth={()=>this.props.getEarthquakes("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson")}
        />
 
       {this.state.count > 0 &&
@@ -85,8 +85,7 @@ class Earthquakes extends React.Component{
           <ToggleChart  toggleChart={this.handleToggleChart} chartBtnName={this.state.chartBtnName}/>
         </div>
       }
-
-      //Chart
+      <br/>
       {!this.state.fetching ?
         !this.state.show_earthquake_chart && <Chart ChartData={this.props.chartData}/>  
       :
@@ -125,45 +124,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEarthquakes_PastHour(){
-      fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
-      .then((response) => {
-        store.dispatch(fetching_earthquakes());
-        return response.json()
-      })
-      .then((responseJson) => {store.dispatch(earthquakes_by_hour(responseJson))})
-      .catch((err) => {console.log("Ann Error Occured" + err);});
-    },
-
-    getEarthquakes_PastDay(){
-      fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
-      .then((response) => {
-        store.dispatch(fetching_earthquakes());
-        return response.json()
-      })
-      .then((responseJson) => {store.dispatch(earthquakes_by_day(responseJson))})
-      .catch((err) => {console.log("Ann Error Occured" + err)});
-    },
-
-    getEarthquakes_PastWeek(){
-      fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")
-      .then((response) => {
-        store.dispatch(fetching_earthquakes());
-        return response.json()
-      })
-      .then((responseJson) => {store.dispatch(earthquakes_by_week(responseJson))})
-      .catch((err) => {console.log("Ann Error Occured" + err)});
-    },
-
-    getEarthquakes_PastMonth(){
-      fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson")
-      .then((response) => {
-        store.dispatch(fetching_earthquakes());
-        return response.json()
-      })
-      .then((responseJson) => {store.dispatch(earthquakes_by_month(responseJson))})
-      .catch((err) => {console.log("Ann Error Occured" + err)});
-    }
+    getEarthquakes: (earthquakeUrl) => { store.dispatch(earthquakes(earthquakeUrl)) }
   }
 };
 
