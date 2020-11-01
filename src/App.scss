@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script|Love+Ya+Like+A+Sister|Ubuntu");
+
+body {
+  background-color: black;
+}
+#app {
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: "Ubuntu", "sans-serif";
+}
+
+#app a {
+  text-decoration: none;
+}
+
+#app h1 {
+  font-family: "Love Ya Like A Sister", cursive;
+  text-align: center;
+  color: #fff;
+}
+
+p {
+  color: #fff;
+  font-size: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.link {
+  color: #4caf50;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  &__center {
+    justify-content: center;
+  }
+}
+
+.earthquake-btn-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @media (max-width: 820px) {
+    flex-direction: column;
+  }
+}
+
+.main .loading-state {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.btn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  font-family: "Kaushan Script", cursive;
+  font-size: 26px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  &:hover {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
+  &:active {
+    transform: translateY(4px);
+  }
+  @media (max-width: 820px) {
+    font-size: 18px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+.toggle-list-chart-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.list-btn,
+.chart-btn {
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 15px 32px;
+  font-family: "Ubuntu", "sans-serif";
+  font-size: 20px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #4caf50;
+    color: black;
+    border: 1px solid transparent;
+  }
+  &:active {
+    background-color: transparent;
+  }
+}
+
+.earthquake-details-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+.earthquake-details {
+  display: block;
+  max-width: 200px;
+  border: 1px solid white;
+  background-color: transparent;
+  margin: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    color: black;
+    background-color: #4caf50;
+    border: 1px solid transparent;
+  }
+  &:hover p {
+    color: black;
+  }
+}
+
+.earthquake-charts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer {
+  max-width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  p {
+    color: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      color: #4caf50;
+    }
+  }
+}
