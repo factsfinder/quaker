@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/quaker/static/css/main.0d883c42.chunk.css",
+    "main.js": "/quaker/static/js/main.4b06f1af.chunk.js",
+    "main.js.map": "/quaker/static/js/main.4b06f1af.chunk.js.map",
+    "runtime-main.js": "/quaker/static/js/runtime-main.e6950f7e.js",
+    "runtime-main.js.map": "/quaker/static/js/runtime-main.e6950f7e.js.map",
+    "static/js/2.917246e7.chunk.js": "/quaker/static/js/2.917246e7.chunk.js",
+    "static/js/2.917246e7.chunk.js.map": "/quaker/static/js/2.917246e7.chunk.js.map",
+    "index.html": "/quaker/index.html",
+    "static/css/main.0d883c42.chunk.css.map": "/quaker/static/css/main.0d883c42.chunk.css.map",
+    "static/js/2.917246e7.chunk.js.LICENSE.txt": "/quaker/static/js/2.917246e7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e6950f7e.js",
+    "static/js/2.917246e7.chunk.js",
+    "static/css/main.0d883c42.chunk.css",
+    "static/js/main.4b06f1af.chunk.js"
+  ]
+}
