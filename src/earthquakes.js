@@ -68,9 +68,9 @@ function Earthquakes() {
 
   return (
     <div className="main">
-      <a className="text-center" href="/">
+   
         <h1>Quaker -- Earthquakes Monitoring</h1>
-      </a>
+      
       <p className="text-center">
         Click on either one of the buttons below to get information about
         earthquakes happening around the world..!
